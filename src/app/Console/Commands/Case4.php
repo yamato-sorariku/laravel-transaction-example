@@ -41,7 +41,7 @@ class Case4 extends Command
     {        
         DB::transaction(function () {
             $fromAccountNumber = '000001';
-            $toAccountNumber = '000002'; //存在しない口座
+            $toAccountNumber = '000002';
     
             $remittance = 2500;
             

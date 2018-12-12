@@ -39,8 +39,7 @@ class Case2 extends Command
     public function handle()
     {
         $fromAccountNumber = '000001';
-        $toAccountNumber = '999999'; //存在しない口座
-
+        $toAccountNumber = '000002';
         $remittance = 2500;
 
         //まず送金元口座から減額
@@ -51,9 +50,10 @@ class Case2 extends Command
         //送金先口座へ振込
         $toAccount = Account::where('account_number', $toAccountNumber)->first();
 
-        if($toAccount === null)
+        if($toAccount !== null)
         {
-            throw new \Exception('口座が存在しません');
+            //無理やりException投げます
+            throw new \Exception('何かしらのエラーが発生');
         }
 
         $toAccount->balance = $toAccount->balance + $remittance;
